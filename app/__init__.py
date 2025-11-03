@@ -1,7 +1,7 @@
 from flask import Flask
 from .db import db, migrate
 from .models import book 
-from .routes.book_routes import books_bp
+from .routes.book_routes import bp as books_bp
 import os
 
 
@@ -21,16 +21,3 @@ def create_app(config=None):
     # Register Blueprints here
     app.register_blueprint(books_bp)
     return app
-
-
-
-# from flask import Flask
-# from .routes.cat_routes import cats_bp # only import what you need. import too much is a waste, but they still in memory.
-
-# def create_app():
-#     # __name__ stores the name of the module we are in
-#     app = Flask(__name__)
-    
-#     app.register_blueprint(cats_bp)
-
-#     return app
