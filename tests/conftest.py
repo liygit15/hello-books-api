@@ -5,7 +5,7 @@ from flask.signals import request_finished
 from dotenv import load_dotenv
 import os
 from app.models.book import Book
-
+from app.models.genre import Genre
 load_dotenv()
 
 @pytest.fixture
@@ -40,4 +40,13 @@ def two_saved_books(app):
     mountain_book = Book(title="Mountain Book", description="i luv 2 climb rocks")
 
     db.session.add_all([ocean_book, mountain_book])
+    db.session.commit()
+
+
+@pytest.fixture
+def two_saved_genres(app):
+    genre1 = Genre(name="genre1")
+    genre2 = Genre(name="genre2")
+
+    db.session.add_all([genre1, genre2])
     db.session.commit()
